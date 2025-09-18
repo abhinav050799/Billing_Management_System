@@ -20,7 +20,7 @@ Route::get('/product-list', function () {
 Route::get('/add-product', function () {
     return view('add-product');
 });
-Route::View('/product-list','product-list');
+// Route::View('/product-list','product-list');
 
 
 

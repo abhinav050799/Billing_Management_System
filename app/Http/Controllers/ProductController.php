@@ -7,13 +7,14 @@ use App\Models\Subcategory;
 use App\Models\Brand;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class ProductController extends Controller
 {
     public function index()
     {
         $products = Product::with(['category', 'subcategory', 'brand'])->get();
-        return view('products.index', compact('products'));
+        return view('products-list', compact('products'));
     }
 
     public function create()
@@ -44,6 +45,23 @@ class ProductController extends Controller
             'manufactured_date' => 'nullable|date',
             'expiry_date' => 'nullable|date|after_or_equal:manufactured_date',
         ]);
+
+        // Convert dates if needed (fallback for invalid format)
+        if ($request->filled('manufactured_date')) {
+            try {
+                $validated['manufactured_date'] = Carbon::createFromFormat('d-m-Y', $request->manufactured_date)->format('Y-m-d');
+            } catch (\Exception $e) {
+                // Already in Y-m-d format or invalid; rely on validation
+            }
+        }
+
+        if ($request->filled('expiry_date')) {
+            try {
+                $validated['expiry_date'] = Carbon::createFromFormat('d-m-Y', $request->expiry_date)->format('Y-m-d');
+            } catch (\Exception $e) {
+                // Already in Y-m-d format or invalid; rely on validation
+            }
+        }
 
         Product::create($validated);
 

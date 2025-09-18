@@ -8097,7 +8097,7 @@ table .edit-delete-action.data {
 .accordions-items-seperate .accordion-item {
   border-block-start: 1px solid #E6EAED;
   border-radius: 8px;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 .accordion-item:last-of-type {
