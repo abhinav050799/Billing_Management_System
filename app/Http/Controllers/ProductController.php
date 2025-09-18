@@ -14,7 +14,9 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::with(['category', 'subcategory', 'brand'])->get();
-        return view('products-list', compact('products'));
+        $categories = Category::all();
+        $brands = Brand::all();
+        return view('product-list', compact('products', 'categories', 'brands'));
     }
 
     public function create()
