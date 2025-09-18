@@ -145,14 +145,14 @@
                             <div class="col-lg-4 col-sm-6 col-12">
                                 <div class="mb-3">
                                     <label class="form-label">Quantity<span class="text-danger ms-1">*</span></label>
-                                    <input type="number" class="form-control" name="quantity" value="{{ old('quantity', 0) }}" step="0.01" min="0" required>
+                                    <input type="text" class="form-control" name="quantity" value="{{ old('quantity', 0) }}" step="0.01" min="0" required>
                                     @error('quantity') <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
                             </div>
                             <div class="col-lg-4 col-sm-6 col-12">
                                 <div class="mb-3">
                                     <label class="form-label">Unit Price<span class="text-danger ms-1">*</span></label>
-                                    <input type="number" class="form-control" name="unit_price" value="{{ old('unit_price') }}" step="0.01" min="0" required>
+                                    <input type="text" class="form-control" name="unit_price" value="{{ old('unit_price') }}" step="0.01" min="0" required>
                                     @error('unit_price') <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
                             </div>
@@ -195,7 +195,7 @@
                             <div class="col-lg-4 col-sm-6 col-12">
                                 <div class="mb-3">
                                     <label class="form-label">Quantity Alert</label>
-                                    <input type="number" class="form-control" name="quantity_alert" value="{{ old('quantity_alert') }}" step="0.01" min="0">
+                                    <input type="text" class="form-control" name="quantity_alert" value="{{ old('quantity_alert') }}" step="0.01" min="0">
                                     @error('quantity_alert') <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
                             </div>

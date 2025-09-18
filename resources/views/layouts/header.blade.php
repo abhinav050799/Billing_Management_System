@@ -543,7 +543,7 @@
                             <a href="javascript:void(0);"><i class="ti ti-brand-unity fs-16 me-2"></i><span> Inventory
                                 </span> <span class="menu-arrow"></span></a>
                             <ul>
-                                <li><a href="product-list.html"><span>Products</span></a></li>
+                                <li><a href="product-list"><span>Products</span></a></li>
                                 <li><a href="add-product"><span>Create Product</span></a></li>
                                 <li><a href="expired-products.html"><span>Expired Products</span></a></li>
                                 <li><a href="low-stocks.html"><span>Low Stocks</span></a></li>

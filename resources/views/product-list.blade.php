@@ -88,10 +88,10 @@
                                 <span class="checkmarks"></span>
                             </label>
                         </th>
-                        <th>Barcode</th>
+                        <!-- <th>Barcode</th> -->
                         <th>Product Name</th>
                         <th>Category</th>
-                        <th>Subcategory</th>
+                        <!-- <th>Subcategory</th> -->
                         <th>Brand</th>
                         <th>Unit Price</th>
                         <th>Unit</th>
@@ -100,10 +100,10 @@
                         <th>Tax Category</th>
                         <th>Tax Percentage</th>
                         <th>HSN/SAC Code</th>
-                        <th>Quantity Alert</th>
+                        <!-- <th>Quantity Alert</th> -->
                         <th>Manufactured Date</th>
                         <th>Expiry Date</th>
-                        <th>Created At</th>
+                        <!-- <th>Created At</th> -->
                     </tr>
                 </thead>
                 <tbody>
@@ -115,22 +115,23 @@
                                     <span class="checkmarks"></span>
                                 </label>
                             </td>
-                            <td>{{ $product->barcode ?? 'N/A' }}</td>
+                            <!-- <td>{{ $product->barcode ?? 'N/A' }}</td> -->
                             <td>{{ $product->name }}</td>
                             <td>{{ $product->category->name ?? 'N/A' }}</td>
-                            <td>{{ $product->subcategory->name ?? 'N/A' }}</td>
+                            <!-- <td>{{ $product->subcategory->name ?? 'N/A' }}</td> -->
                             <td>{{ $product->brand->name ?? 'N/A' }}</td>
                             <td>₹{{ number_format($product->unit_price, 2) }}</td>
                             <td>{{ ucfirst($product->unit_of_measure) }}</td>
-                            <td>{{ number_format($product->quantity, 2) }}</td>
+                            <!-- <td>{{ number_format($product->quantity) }}</td> -->
+                            <td>{{ rtrim(rtrim(number_format($product->quantity, 2, '.', ''), '0'), '.') }}</td>
                             <td>{{ ucfirst($product->tax_type) }}</td>
                             <td>{{ strtoupper($product->tax_category) }}</td>
                             <td>{{ $product->tax_percentage }}%</td>
                             <td>{{ $product->hsn_sac_code ?? 'N/A' }}</td>
-                            <td>{{ $product->quantity_alert ? number_format($product->quantity_alert, 2) : 'N/A' }}</td>
+                            <!-- <td>{{ $product->quantity_alert ? number_format($product->quantity_alert, 2) : 'N/A' }}</td> -->
                             <td>{{ $product->manufactured_date ?? 'N/A' }}</td>
                             <td>{{ $product->expiry_date ?? 'N/A' }}</td>
-                            <td>{{ $product->created_at->format('Y-m-d H:i:s') }}</td>
+                            <!-- <td>{{ $product->created_at->format('Y-m-d H:i:s') }}</td> -->
                         </tr>
                     @empty
                         <tr>
