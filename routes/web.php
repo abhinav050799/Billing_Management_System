@@ -12,8 +12,8 @@ Route::get('/', function () {
     return view('layout-horizontal');
 })->name('home');
 
-Route::get('/product-list', function () {
-    return view('product-list');
+Route::get('/product-details', function () {
+    return view('product-details');
 });
 
 

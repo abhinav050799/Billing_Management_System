@@ -419,14 +419,14 @@
                         <a href="javascript:void(0);" class="nav-link userset" data-bs-toggle="dropdown">
                             <span class="user-info p-0">
                                 <span class="user-letter">
-                                    <img src="assets/img/profiles/avator1.jpg" alt="Img" class="img-fluid">
+                                    <img src="{{ asset('assets/img/profiles/avator1.jpg') }}" alt="Img" class="img-fluid">
                                 </span>
                             </span>
                         </a>
                         <div class="dropdown-menu menu-drop-user">
                             <div class="profileset d-flex align-items-center">
                                 <span class="user-img me-2">
-                                    <img src="assets/img/profiles/avator1.jpg" alt="Img">
+                                    <img src="{{ asset('assets/img/profiles/avator1.jpg') }}" alt="Img">
                                 </span>
                                 <div>
                                     <h6 class="fw-medium">John Smilga</h6>
@@ -547,8 +547,8 @@
                             <a href="javascript:void(0);"><i class="ti ti-brand-unity fs-16 me-2"></i><span> Inventory
                                 </span> <span class="menu-arrow"></span></a>
                             <ul>
-                                <li><a href="product-list"><span>Products</span></a></li>
-                                <li><a href="add-product"><span>Create Product</span></a></li>
+                                <li><a href="{{ route('products.index') }}"><span>Products</span></a></li>
+                                <li><a href="{{ route('products.create') }}"><span>Create Product</span></a></li>
                                 <li><a href="expired-products.html"><span>Expired Products</span></a></li>
                                 <li><a href="low-stocks.html"><span>Low Stocks</span></a></li>
                                 <li><a href="category-list.html"><span>Category</span></a></li>

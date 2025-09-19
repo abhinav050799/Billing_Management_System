@@ -133,19 +133,20 @@
                             <td>{{ $product->manufactured_date ?? 'N/A' }}</td>
                             <td>{{ $product->expiry_date ?? 'N/A' }}</td>
                             <!-- <td>{{ $product->created_at->format('Y-m-d H:i:s') }}</td> -->
-<td class="action-table-data">
-    <div class="edit-delete-action">
-        <a class="me-2 edit-icon p-2" href="{{ route('products.index', $product->id) }}">
-            <i data-feather="eye" class="action-eye"></i>
-        </a>
-        <a class="me-2 p-2" href="{{ route('products.edit', $product->id) }}">
-            <i data-feather="edit" class="feather-edit"></i>
-        </a>
-        <a data-bs-toggle="modal" data-bs-target="#delete-modal-{{ $product->id }}" class="p-2" href="javascript:void(0);">
-            <i data-feather="trash-2" class="feather-trash-2"></i>
-        </a>
-    </div>
-</td>
+                            <td class="action-table-data">
+                                <div class="edit-delete-action">
+                                    <a class="me-2 edit-icon p-2" href="product-details">
+                                    <!-- <a class="me-2 edit-icon p-2" href="{{ route('products.index', $product->id) }}"> -->
+                                        <i data-feather="eye" class="action-eye"></i>
+                                    </a>
+                                    <a class="me-2 p-2" href="{{ route('products.edit', $product->id) }}">
+                                        <i data-feather="edit" class="feather-edit"></i>
+                                    </a>
+                                    <a data-bs-toggle="modal" data-bs-target="#delete-modal-{{ $product->id }}" class="p-2" href="javascript:void(0);">
+                                        <i data-feather="trash-2" class="feather-trash-2"></i>
+                                    </a>
+                                </div>
+                            </td>
                         </tr>
                     @empty
                         <tr>
