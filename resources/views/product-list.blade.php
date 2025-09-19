@@ -133,20 +133,19 @@
                             <td>{{ $product->manufactured_date ?? 'N/A' }}</td>
                             <td>{{ $product->expiry_date ?? 'N/A' }}</td>
                             <!-- <td>{{ $product->created_at->format('Y-m-d H:i:s') }}</td> -->
-                            <td class="action-table-data">
-                                <div class="edit-delete-action">
-                                    <a class="me-2 edit-icon p-2" href="product-details.html">
-                                        <i data-feather="eye" class="action-eye"></i>
-                                    </a>
-                                    <a class="me-2 p-2" href="edit-product.html">
-                                        <i data-feather="edit" class="feather-edit"></i>
-                                    </a>
-                                    <a data-bs-toggle="modal" data-bs-target="#delete-modal" class="p-2"
-                                        href="javascript:void(0);">
-                                        <i data-feather="trash-2" class="feather-trash-2"></i>
-                                    </a>
-                                </div>
-                            </td>
+<td class="action-table-data">
+    <div class="edit-delete-action">
+        <a class="me-2 edit-icon p-2" href="{{ route('products.index', $product->id) }}">
+            <i data-feather="eye" class="action-eye"></i>
+        </a>
+        <a class="me-2 p-2" href="{{ route('products.edit', $product->id) }}">
+            <i data-feather="edit" class="feather-edit"></i>
+        </a>
+        <a data-bs-toggle="modal" data-bs-target="#delete-modal-{{ $product->id }}" class="p-2" href="javascript:void(0);">
+            <i data-feather="trash-2" class="feather-trash-2"></i>
+        </a>
+    </div>
+</td>
                         </tr>
                     @empty
                         <tr>
@@ -162,26 +161,29 @@
 
 @include('layouts.footer')
 
-    <!-- delete modal -->
-    <div class="modal fade" id="delete-modal">
+@foreach ($products as $product)
+    <div class="modal fade" id="delete-modal-{{ $product->id }}">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="page-wrapper-new p-0">
                     <div class="content p-5 px-3 text-center">
-                        <span class="rounded-circle d-inline-flex p-2 bg-danger-transparent mb-2"><i
-                                class="ti ti-trash fs-24 text-danger"></i></span>
+                        <span class="rounded-circle d-inline-flex p-2 bg-danger-transparent mb-2"><i class="ti ti-trash fs-24 text-danger"></i></span>
                         <h4 class="fs-20 text-gray-9 fw-bold mb-2 mt-1">Delete Product</h4>
-                        <p class="text-gray-6 mb-0 fs-16">Are you sure you want to delete product?</p>
+                        <p class="text-gray-6 mb-0 fs-16">Are you sure you want to delete {{ $product->name }}?</p>
                         <div class="modal-footer-btn mt-3 d-flex justify-content-center">
-                            <button type="button" class="btn me-2 btn-secondary fs-13 fw-medium p-2 px-3 shadow-none"
-                                data-bs-dismiss="modal">Cancel</button>
-                            <button type="submit" class="btn btn-primary fs-13 fw-medium p-2 px-3">Yes Delete</button>
+                            <button type="button" class="btn me-2 btn-secondary fs-13 fw-medium p-2 px-3 shadow-none" data-bs-dismiss="modal">Cancel</button>
+                            <form action="{{ route('products.destroy', $product->id) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-primary fs-13 fw-medium p-2 px-3">Yes Delete</button>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+@endforeach
 
 
 <script>

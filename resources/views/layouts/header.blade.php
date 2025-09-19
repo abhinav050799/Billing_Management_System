@@ -82,13 +82,17 @@
                 <!-- Logo -->
                 <div class="header-left active">
                     <a href="index.html" class="logo logo-normal">
-                        <img src="assets/img/logo.svg" alt="Img">
+                        <!-- <img src="assets/img/logo.svg" alt="Img"> -->
+                        <img src="{{ asset('assets/img/logo.svg') }}" alt="Img">
                     </a>
                     <a href="index.html" class="logo logo-white">
-                        <img src="assets/img/logo-white.svg" alt="Img">
+                        <!-- <img src="assets/img/logo-white.svg" alt="Img"> -->
+                        <img src="{{ asset('assets/img/logo-white.svg') }}" alt="Img">
                     </a>
                     <a href="index.html" class="logo-small">
-                        <img src="assets/img/logo-small.png" alt="Img">
+                        <!-- <img src="assets/img/logo-small.png" alt="Img"> -->
+                        <img src="{{ asset('assets/img/logo-small.png') }}" alt="Img">
+                        
                     </a>
                 </div>
                 <!-- /Logo -->
@@ -118,7 +122,7 @@
                                         <span><i class="ti ti-search"></i></span>
                                     </div>
                                     <span class="input-group-text">
-                                        <kbd class="d-flex align-items-center"><img src="assets/img/icons/command.svg"
+                                        <kbd class="d-flex align-items-center"><img src="{{ asset('assets/img/icons/command.svg') }}"
                                                 alt="img" class="me-1">K</kbd>
                                     </span>
                                 </div>
@@ -141,13 +145,13 @@
                                         <h6><span><i data-feather="user" class="feather-16"></i></span>Customers</h6>
                                         <ul class="customers">
                                             <li><a href="javascript:void(0);">Aron Varu<img
-                                                        src="assets/img/profiles/avator1.jpg" alt="Img"
+                                                        src="{{ asset('assets/img/profiles/avator1.jpg') }}" alt="Img"
                                                         class="img-fluid"></a></li>
                                             <li><a href="javascript:void(0);">Jonita<img
-                                                        src="assets/img/profiles/avatar-01.jpg" alt="Img"
+                                                        src="{{ asset('assets/img/profiles/avator1.jpg') }}" alt="Img"
                                                         class="img-fluid"></a></li>
                                             <li><a href="javascript:void(0);">Aaron<img
-                                                        src="assets/img/profiles/avatar-10.jpg" alt="Img"
+                                                        src="{{ asset('assets/img/profiles/avator1.jpg') }}" alt="Img"
                                                         class="img-fluid"></a></li>
                                         </ul>
                                     </div>
@@ -163,7 +167,7 @@
                             data-bs-toggle="dropdown">
                             <span class="user-info">
                                 <span class="user-letter">
-                                    <img src="assets/img/store/store-01.png" alt="Store Logo" class="img-fluid">
+                                    <img src="{{ asset('assets/img/store/store-01.png') }}" alt="Store Logo" class="img-fluid">
                                 </span>
                                 <span class="user-detail">
                                     <span class="user-name">Freshmart</span>
@@ -304,7 +308,7 @@
                     <li class="nav-item dropdown has-arrow flag-nav nav-item-box">
                         <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="javascript:void(0);"
                             role="button">
-                            <img src="assets/img/flags/us-flag.svg" alt="Language" class="img-fluid">
+                            <img src="{{ asset('assets/img/flags/us-flag.svg') }}" alt="Language" class="img-fluid">
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
                             <a href="javascript:void(0);" class="dropdown-item">
