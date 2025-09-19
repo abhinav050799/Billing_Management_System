@@ -71,6 +71,12 @@ class ProductController extends Controller
         return redirect("/")->with('success', 'Product created successfully.');
     }
 
+    public function show($id)
+    {
+        $product = Product::with(['category', 'subcategory', 'brand'])->findOrFail($id);
+        return view('product-details', compact('product'));
+    }
+
     public function edit($id)
     {
         $product = Product::findOrFail($id);
