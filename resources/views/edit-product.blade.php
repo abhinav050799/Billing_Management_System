@@ -54,10 +54,10 @@
                         <div class="row">
                             <div class="col-sm-6 col-12">
                                 <div class="mb-3">
-                                    <div class="add-newplus">
+                                    <!-- <div class="add-newplus"> -->
                                         <label class="form-label">Category<span class="text-danger ms-1">*</span></label>
-                                        <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#add-product-category"><i data-feather="plus-circle" class="plus-down-add"></i><span>Add New</span></a>
-                                    </div>
+                                        <!-- <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#add-product-category"><i data-feather="plus-circle" class="plus-down-add"></i><span>Add New</span></a> -->
+                                    <!-- </div> -->
                                     <select class="select" name="category_id" required>
                                         <option value="">Select</option>
                                         @foreach ($categories as $category)

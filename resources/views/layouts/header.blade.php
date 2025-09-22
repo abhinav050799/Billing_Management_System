@@ -65,6 +65,8 @@
     <!-- Main CSS (Custom Styles) -->
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
 
+    <!-- jQuery (Required before DataTables and other scripts) -->
+    <script src="{{ asset('assets/js/jquery-3.7.1.min.js') }}"></script>
 
 </head>
 
