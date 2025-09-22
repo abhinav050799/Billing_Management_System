@@ -7,16 +7,16 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    // public function store(Request $request)
-    // {
-    //     $validated = $request->validate([
-    //         'name' => 'required|string|max:255',
-    //     ]);
+    public function productpage_store(Request $request)
+    {
+        $validated = $request->validate([
+            'name' => 'required|string|max:255|unique:categories,name',
+        ]);
 
-    //     Category::create($validated);
+        Category::create($validated);
 
-    //     return redirect()->back()->with('success', 'Category created successfully.');
-    // }
+        return redirect()->back()->with('success', 'Category created successfully.');
+    }
 
      public function index()
     {
@@ -27,7 +27,8 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'name' => 'required|string|max:255',
+            'name' => 'required|string|max:255|unique:categories,name',
+            ], [ 'name.unique' => 'This category is already Present' ,
         ]);
 
         Category::create($validated);
@@ -38,7 +39,8 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         $validated = $request->validate([
-            'name' => 'required|string|max:255',
+            'name' => 'required|string|max:255|unique:categories,name,' . $id,
+            ], [ 'name.unique' => 'This category is already Present' ,
         ]);
 
         $category = Category::findOrFail($id);

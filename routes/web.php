@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\SubCategoryController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -12,8 +13,8 @@ Route::get('/', function () {
     return view('layout-horizontal');
 })->name('home');
 
-Route::get('/category-list', function () {
-    return view('category-list');
+Route::get('/sub-categories', function () {
+    return view('sub-categories');
 });
 
 
@@ -32,13 +33,18 @@ Route::get('/product-details/{id}', [ProductController::class, 'show'])->name('p
 Route::get('/products/{id}/edit', [ProductController::class, 'edit'])->name('products.edit');
 Route::put('/products/{id}', [ProductController::class, 'update'])->name('products.update');
 Route::delete('/products/{id}', [ProductController::class, 'destroy'])->name('products.destroy');
-// Route::post('/categories', [CategoryController::class, 'store'])->name('categories.store');
+Route::post('/categories_product', [CategoryController::class, 'productpage_store'])->name('categories.productpage_store');
 
 
 Route::get('/category-list', [CategoryController::class, 'index'])->name('categories.index');
 Route::post('/categories', [CategoryController::class, 'store'])->name('categories.store');
 Route::put('/categories/{id}', [CategoryController::class, 'update'])->name('categories.update');
 Route::delete('/categories/{id}', [CategoryController::class, 'destroy'])->name('categories.destroy');
+
+Route::get('/sub-categories', [SubCategoryController::class, 'index'])->name('subcategories.index');
+Route::post('/subcategories', [SubCategoryController::class, 'store'])->name('subcategories.store');
+Route::put('/subcategories/{id}', [SubCategoryController::class, 'update'])->name('subcategories.update');
+Route::delete('/subcategories/{id}', [SubCategoryController::class, 'destroy'])->name('subcategories.destroy');
 
 
 Route::get('/dashboard', function () {
