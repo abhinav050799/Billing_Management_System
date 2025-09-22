@@ -120,12 +120,23 @@
                             </div>
                         </div>
                         <div class="col-lg-12">
-                            <div class="summer-description-box">
+                            <!-- <div class="summer-description-box">
                                 <label class="form-label">Description</label>
                                 <div class="editor pages-editor"></div>
                                 <textarea name="description" style="display: none;">{{ old('description') }}</textarea>
                                 <p class="fs-14 mt-1">Maximum 60 Words</p>
                                 @error('description') <span class="text-danger">{{ $message }}</span> @enderror
+                            </div> -->
+                           <div class="summer-description-box">
+                                <label for="description" class="form-label">Description</label>
+                                
+                                <textarea name="description" id="description" class="form-control">{{ old('description') }}</textarea>
+                                
+                                <p class="fs-14 mt-1">Minimum 60 Words</p>
+
+                                {{-- @error('description') 
+                                    <span class="text-danger">{{ $message }}</span> 
+                                @enderror --}}
                             </div>
                         </div>
                     </div>
@@ -276,5 +287,25 @@
     </div>
 </div>
 <!-- /Add Category -->
+
+<!-- <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Initialize Daterangepicker for single date selection
+        $('.datetimepicker').daterangepicker({
+            singleDatePicker: true,
+            showDropdowns: true,
+            autoApply: true,
+            locale: {
+                format: 'DD/MM/YYYY',
+                separator: ' - ',
+                applyLabel: 'Apply',
+                cancelLabel: 'Cancel',
+                daysOfWeek: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+                monthNames: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+                firstDay: 1
+            }
+        });
+    });
+</script> -->
 
 @include('layouts.footer')

@@ -121,12 +121,23 @@
                             </div>
                         </div>
                         <div class="col-lg-12">
-                            <div class="summer-description-box">
+                            <!-- <div class="summer-description-box">
                                 <label class="form-label">Description</label>
                                 <div class="editor pages-editor">{!! old('description', $product->description) !!}</div>
                                 <textarea name="description" style="display: none;">{{ old('description', $product->description) }}</textarea>
                                 <p class="fs-14 mt-1">Maximum 60 Words</p>
                                 @error('description') <span class="text-danger">{{ $message }}</span> @enderror
+                            </div> -->
+                             <div class="summer-description-box">
+                                <label for="description" class="form-label">Description</label>
+                                
+                                <textarea name="description" id="description" class="form-control">{{ old('description', $product->description) }}</textarea>
+                                
+                                <p class="fs-14 mt-1">Minimum 60 Words</p>
+
+                                {{-- @error('description') 
+                                    <span class="text-danger">{{ $message }}</span> 
+                                @enderror --}}
                             </div>
                         </div>
                     </div>
@@ -220,7 +231,7 @@
                                     <label class="form-label">Manufactured Date</label>
                                     <div class="input-groupicon calender-input">
                                         <i data-feather="calendar" class="info-img"></i>
-                                        <input type="text" class="datetimepicker form-control" name="manufactured_date" value="{{ old('manufactured_date', $product->manufactured_date) }}" placeholder="dd/mm/yyyy">
+                                        <input type="text" class="datetimepicker form-control" name="manufactured_date" value="{{ old('manufactured_date', $product->manufactured_date ? \Carbon\Carbon::parse($product->manufactured_date)->format('d/m/Y') : '') }}" placeholder="dd/mm/yyyy">
                                     </div>
                                     @error('manufactured_date') <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
@@ -230,7 +241,7 @@
                                     <label class="form-label">Expiry Date</label>
                                     <div class="input-groupicon calender-input">
                                         <i data-feather="calendar" class="info-img"></i>
-                                        <input type="text" class="datetimepicker form-control" name="expiry_date" value="{{ old('expiry_date', $product->expiry_date) }}" placeholder="dd/mm/yyyy">
+                                        <input type="text" class="datetimepicker form-control" name="expiry_date" value="{{ old('expiry_date', $product->expiry_date ? \Carbon\Carbon::parse($product->expiry_date)->format('d/m/Y') : '') }}" placeholder="dd/mm/yyyy">
                                     </div>
                                     @error('expiry_date') <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
@@ -277,5 +288,25 @@
     </div>
 </div>
 <!-- /Add Category -->
+
+<!-- <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Initialize Daterangepicker for single date selection
+        $('.datetimepicker').daterangepicker({
+            singleDatePicker: true,
+            showDropdowns: true,
+            autoApply: true,
+            locale: {
+                format: 'DD/MM/YYYY',
+                separator: ' - ',
+                applyLabel: 'Apply',
+                cancelLabel: 'Cancel',
+                daysOfWeek: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+                monthNames: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+                firstDay: 1
+            }
+        });
+    });
+</script> -->
 
 @include('layouts.footer')
