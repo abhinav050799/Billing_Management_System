@@ -551,7 +551,7 @@
                                 <li><a href="{{ route('products.create') }}"><span>Create Product</span></a></li>
                                 <li><a href="expired-products.html"><span>Expired Products</span></a></li>
                                 <li><a href="low-stocks.html"><span>Low Stocks</span></a></li>
-                                <li><a href="category-list.html"><span>Category</span></a></li>
+                                <li><a href="{{ route('categories.index') }}"><span>Category</span></a></li>
                                 <li><a href="sub-categories.html"><span>Sub Category</span></a></li>
                                 <li><a href="brand-list.html"><span>Brands</span></a></li>
                                 <li><a href="units.html"><span>Units</span></a></li>

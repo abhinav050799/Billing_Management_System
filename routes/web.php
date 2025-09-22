@@ -12,8 +12,8 @@ Route::get('/', function () {
     return view('layout-horizontal');
 })->name('home');
 
-Route::get('/product-details', function () {
-    return view('product-details');
+Route::get('/category-list', function () {
+    return view('category-list');
 });
 
 
@@ -32,7 +32,13 @@ Route::get('/product-details/{id}', [ProductController::class, 'show'])->name('p
 Route::get('/products/{id}/edit', [ProductController::class, 'edit'])->name('products.edit');
 Route::put('/products/{id}', [ProductController::class, 'update'])->name('products.update');
 Route::delete('/products/{id}', [ProductController::class, 'destroy'])->name('products.destroy');
+// Route::post('/categories', [CategoryController::class, 'store'])->name('categories.store');
+
+
+Route::get('/category-list', [CategoryController::class, 'index'])->name('categories.index');
 Route::post('/categories', [CategoryController::class, 'store'])->name('categories.store');
+Route::put('/categories/{id}', [CategoryController::class, 'update'])->name('categories.update');
+Route::delete('/categories/{id}', [CategoryController::class, 'destroy'])->name('categories.destroy');
 
 
 Route::get('/dashboard', function () {
