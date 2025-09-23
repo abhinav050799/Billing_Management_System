@@ -18,7 +18,7 @@ class CategoryController extends Controller
         return redirect()->back()->with('success', 'Category created successfully.');
     }
 
-     public function index()
+    public function index()
     {
         $categories = Category::all();
         return view('category-list', compact('categories'));

@@ -111,7 +111,7 @@
                 <ul class="nav user-menu">
 
                     <!-- Search -->
-                    <li class="nav-item nav-searchinputs">
+                    <!-- <li class="nav-item nav-searchinputs">
                         <div class="top-nav-search">
                             <a href="javascript:void(0);" class="responsive-search">
                                 <i class="fa fa-search"></i>
@@ -160,7 +160,7 @@
                                 </div>
                             </form>
                         </div>
-                    </li>
+                    </li> -->
                     <!-- /Search -->
 
 
@@ -169,7 +169,7 @@
                     <!-- Check if user is authenticated -->
 
                     <!-- Select Store -->
-                    <li class="nav-item dropdown has-arrow main-drop select-store-dropdown">
+                    <!-- <li class="nav-item dropdown has-arrow main-drop select-store-dropdown">
                         <a href="javascript:void(0);" class="dropdown-toggle nav-link select-store"
                             data-bs-toggle="dropdown">
                             <span class="user-info">
@@ -195,10 +195,10 @@
                                 <img src="assets/img/store/store-04.png" alt="Store Logo" class="img-fluid">Grocery Eden
                             </a>
                         </div>
-                    </li>
+                    </li> -->
                     <!-- /Select Store -->
 
-                    <li class="nav-item dropdown link-nav">
+                    <!-- <li class="nav-item dropdown link-nav">
                         <a href="javascript:void(0);" class="btn btn-primary btn-md d-inline-flex align-items-center"
                             data-bs-toggle="dropdown">
                             <i class="ti ti-circle-plus me-1"></i>Add New
@@ -303,16 +303,16 @@
                                 </div>
                             </div>
                         </div>
-                    </li>
+                    </li> -->
 
-                    <li class="nav-item pos-nav">
+                    <!-- <li class="nav-item pos-nav">
                         <a href="pos.html" class="btn btn-dark btn-md d-inline-flex align-items-center">
                             <i class="ti ti-device-laptop me-1"></i>POS
                         </a>
-                    </li>
+                    </li> -->
 
                     <!-- Flag -->
-                    <li class="nav-item dropdown has-arrow flag-nav nav-item-box">
+                    <!-- <li class="nav-item dropdown has-arrow flag-nav nav-item-box">
                         <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="javascript:void(0);"
                             role="button">
                             <img src="{{ asset('assets/img/flags/us-flag.svg') }}" alt="Language" class="img-fluid">
@@ -325,14 +325,14 @@
                                 <img src="assets/img/flags/arabic.svg" alt="Img" height="16">Arabic
                             </a>
                         </div>
-                    </li>
+                    </li> -->
                     <!-- /Flag -->
 
-                    <li class="nav-item nav-item-box">
+                    <!-- <li class="nav-item nav-item-box">
                         <a href="javascript:void(0);" id="btnFullscreen">
                             <i class="ti ti-maximize"></i>
                         </a>
-                    </li>
+                    </li> -->
                     <li class="nav-item nav-item-box">
                         <a href="email.html">
                             <i class="ti ti-mail"></i>
@@ -419,9 +419,9 @@
                     </li>
                     <!-- /Notifications -->
 
-                    <li class="nav-item nav-item-box">
+                    <!-- <li class="nav-item nav-item-box">
                         <a href="general-settings.html"><i class="ti ti-settings"></i></a>
-                    </li>
+                    </li> -->
                     <li class="nav-item dropdown has-arrow main-drop profile-nav">
 
                         @php
@@ -535,13 +535,13 @@
                                 <li class="submenu">
                                     <a href="javascript:void(0);"><span>Dashboard</span> <span
                                             class="menu-arrow"></span></a>
-                                    <ul>
+                                    <!-- <ul>
                                         <li><a href="index.html">Admin Dashboard</a></li>
                                         <li><a href="index.html">Admin Dashboard 2</a></li>
                                         <li><a href="sales-dashboard.html">Sales Dashboard</a></li>
-                                    </ul>
+                                    </ul> -->
                                 </li>
-                                <li class="submenu">
+                                <!-- <li class="submenu">
                                     <a href="javascript:void(0);"><span>Super Admin</span><span
                                             class="menu-arrow"></span></a>
                                     <ul>
@@ -552,8 +552,8 @@
                                         <li><a href="domain.html">Domain</a></li>
                                         <li><a href="purchase-transaction.html">Purchase Transaction</a></li>
                                     </ul>
-                                </li>
-                                <li class="submenu">
+                                </li> -->
+                                <!-- <li class="submenu">
                                     <a href="javascript:void(0);"><span>Application</span><span
                                             class="menu-arrow"></span></a>
                                     <ul>
@@ -588,8 +588,8 @@
                                         <li><a href="social-feed.html">Social Feed</a></li>
                                         <li><a href="search-list.html">Search List</a></li>
                                     </ul>
-                                </li>
-                                <li class="submenu">
+                                </li> -->
+                                <!-- <li class="submenu">
                                     <a href="javascript:void(0);" class="active subdrop"><span>Layouts</span><span
                                             class="menu-arrow"></span></a>
                                     <ul>
@@ -601,7 +601,7 @@
                                         <li><a href="layout-rtl.html">RTL</a></li>
                                         <li><a href="layout-dark.html">Dark</a></li>
                                     </ul>
-                                </li>
+                                </li> -->
                             </ul>
                         </li>
                         <li class="submenu">
@@ -610,14 +610,14 @@
                             <ul>
                                 <li><a href="{{ route('products.index') }}"><span>Products</span></a></li>
                                 <li><a href="{{ route('products.create') }}"><span>Create Product</span></a></li>
-                                <li><a href="expired-products.html"><span>Expired Products</span></a></li>
-                                <li><a href="low-stocks.html"><span>Low Stocks</span></a></li>
+                                <!-- <li><a href="expired-products.html"><span>Expired Products</span></a></li> -->
+                                <!-- <li><a href="low-stocks.html"><span>Low Stocks</span></a></li> -->
                                 <li><a href="{{ route('categories.index') }}"><span>Category</span></a></li>
                                 <li><a href="{{ route('subcategories.index') }}"><span>Sub Category</span></a></li>
                                 <li><a href="{{ route('brands.index') }}"><span>Brands</span></a></li>
-                                <li><a href="units.html"><span>Units</span></a></li>
-                                <li><a href="varriant-attributes.html"><span>Variant Attributes</span></a></li>
-                                <li><a href="warranty.html"><span>Warranties</span></a></li>
+                                <!-- <li><a href="units.html"><span>Units</span></a></li> -->
+                                <!-- <li><a href="varriant-attributes.html"><span>Variant Attributes</span></a></li> -->
+                                <!-- <li><a href="warranty.html"><span>Warranties</span></a></li> -->
                                 <li><a href="barcode.html"><span>Print Barcode</span></a></li>
                                 <li><a href="qrcode.html"><span>Print QR Code</span></a></li>
                             </ul>
