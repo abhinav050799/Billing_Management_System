@@ -69,6 +69,7 @@ class ProductController extends Controller
 
         // return redirect()->route('home')->with('success', 'Product created successfully.');
         return redirect("/")->with('success', 'Product created successfully.');
+        
     }
 
     public function show($id)

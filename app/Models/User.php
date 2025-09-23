@@ -21,6 +21,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+         'profile_photo_path',
+         'role_uuid',
     ];
 
     /**
@@ -45,4 +47,23 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+   public function getProfilePhotoUrlAttribute()
+{
+    if ($this->profile_photo_path) {
+        // Return the URL for the stored profile photo if exists
+        return asset('storage/' . $this->profile_photo_path);
+    }
+
+    // Return a default avatar if no profile photo exists
+   return asset('assets/img/avatar/avatar-25.png');
 }
+
+public function role()
+{
+    return $this->belongsTo(Role::class, 'role_uuid', 'role_uuid');
+}
+
+
+}
+

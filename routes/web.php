@@ -6,6 +6,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\BrandController;
+use App\Http\Controllers\EmployeeController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -17,11 +18,14 @@ Route::get('/', function () {
 Route::get('/brands-list', function () {
     return view('brands-list');
 });
+// Route::get('/product-list', function () {
+//     return view('product-list');
+// });
 
 
-Route::get('/add-product', function () {
-    return view('add-product');
-});
+// Route::get('/add-product', function () {
+//     return view('add-product');
+// });
 // Route::View('/product-list','product-list');
 
 
@@ -63,6 +67,25 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+
+Route::prefix('employees')->name('employees.')->group(function () {
+        Route::get('/', [EmployeeController::class, 'index'])->name('index');
+    Route::get('create', [EmployeeController::class, 'create'])->name('create');
+    Route::post('store', [EmployeeController::class, 'store'])->name('store');
+});
+
+Route::prefix('employee')->group(function () {
+
+    // Show login form
+    Route::get('login', [EmployeeController::class, 'showLoginForm'])->name('employee.login');
+
+    // Handle login
+    Route::post('login', [EmployeeController::class, 'login'])->name('employee.login.submit');
+
+    // Logout
+    Route::post('logout', [EmployeeController::class, 'logout'])->name('employee.logout');
 });
 
 require __DIR__.'/auth.php';
