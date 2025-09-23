@@ -42,10 +42,12 @@ Route::post('/categories', [CategoryController::class, 'store'])->name('categori
 Route::put('/categories/{id}', [CategoryController::class, 'update'])->name('categories.update');
 Route::delete('/categories/{id}', [CategoryController::class, 'destroy'])->name('categories.destroy');
 
+
 Route::get('/sub-categories', [SubCategoryController::class, 'index'])->name('subcategories.index');
 Route::post('/subcategories', [SubCategoryController::class, 'store'])->name('subcategories.store');
 Route::put('/subcategories/{id}', [SubCategoryController::class, 'update'])->name('subcategories.update');
 Route::delete('/subcategories/{id}', [SubCategoryController::class, 'destroy'])->name('subcategories.destroy');
+
 
 Route::get('/brands-list', [BrandController::class, 'index'])->name('brands.index');
 Route::post('/brands', [BrandController::class, 'store'])->name('brands.store');

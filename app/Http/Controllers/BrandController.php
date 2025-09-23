@@ -18,7 +18,7 @@ class BrandController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255|unique:brands,name',
         ], [
-            'name.unique' => 'Yeh brand name pehle se exist karta hai.',
+            'name.unique' => 'this brand already exist',
         ]);
 
         Brand::create($validated);
@@ -31,7 +31,7 @@ class BrandController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255|unique:brands,name,' . $id,
         ], [
-            'name.unique' => 'Yeh brand name pehle se exist karta hai.',
+            'name.unique' => 'this brand already exist',
         ]);
 
         $brand = Brand::findOrFail($id);
