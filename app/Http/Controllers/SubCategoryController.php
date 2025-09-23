@@ -21,9 +21,9 @@ class SubCategoryController extends Controller
             'name' => 'required|string|max:255|unique:subcategories,name',
             'category_id' => 'required|exists:categories,id',
         ], [
-            'name.unique' => 'Yeh sub category name pehle se exist karta hai.',
-            'category_id.required' => 'Category select karna zaroori hai.',
-            'category_id.exists' => 'Selected category valid nahi hai.',
+            'name.unique' => 'this sub-category already exist',
+            'category_id.required' => 'Category is required',
+            'category_id.exists' => 'Selected category is not valid',
         ]);
 
         SubCategory::create($validated);
@@ -37,9 +37,9 @@ class SubCategoryController extends Controller
             'name' => 'required|string|max:255|unique:subcategories,name,' . $id,
             'category_id' => 'required|exists:categories,id',
         ], [
-            'name.unique' => 'Yeh sub category name pehle se exist karta hai.',
-            'category_id.required' => 'Category select karna zaroori hai.',
-            'category_id.exists' => 'Selected category valid nahi hai.',
+            'name.unique' => 'this sub-category already exist',
+            'category_id.required' => 'Category is required',
+            'category_id.exists' => 'Selected category is not valid',
         ]);
 
         $subcategory = SubCategory::findOrFail($id);

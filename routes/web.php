@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\SubCategoryController;
+use App\Http\Controllers\BrandController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -13,8 +14,8 @@ Route::get('/', function () {
     return view('layout-horizontal');
 })->name('home');
 
-Route::get('/sub-categories', function () {
-    return view('sub-categories');
+Route::get('/brands-list', function () {
+    return view('brands-list');
 });
 
 
@@ -45,6 +46,11 @@ Route::get('/sub-categories', [SubCategoryController::class, 'index'])->name('su
 Route::post('/subcategories', [SubCategoryController::class, 'store'])->name('subcategories.store');
 Route::put('/subcategories/{id}', [SubCategoryController::class, 'update'])->name('subcategories.update');
 Route::delete('/subcategories/{id}', [SubCategoryController::class, 'destroy'])->name('subcategories.destroy');
+
+Route::get('/brands-list', [BrandController::class, 'index'])->name('brands.index');
+Route::post('/brands', [BrandController::class, 'store'])->name('brands.store');
+Route::put('/brands/{id}', [BrandController::class, 'update'])->name('brands.update');
+Route::delete('/brands/{id}', [BrandController::class, 'destroy'])->name('brands.destroy');
 
 
 Route::get('/dashboard', function () {
