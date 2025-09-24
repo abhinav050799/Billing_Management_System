@@ -53,10 +53,7 @@ Route::put('/subcategories/{id}', [SubCategoryController::class, 'update'])->nam
 Route::delete('/subcategories/{id}', [SubCategoryController::class, 'destroy'])->name('subcategories.destroy');
 
 
-Route::get('/brands-list', [BrandController::class, 'index'])->name('brands.index');
-Route::post('/brands', [BrandController::class, 'store'])->name('brands.store');
-Route::put('/brands/{id}', [BrandController::class, 'update'])->name('brands.update');
-Route::delete('/brands/{id}', [BrandController::class, 'destroy'])->name('brands.destroy');
+
 
 
 Route::get('/dashboard', function () {
@@ -67,6 +64,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    
 });
 
 

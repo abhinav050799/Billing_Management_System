@@ -9,7 +9,7 @@ class BrandController extends Controller
 {
     public function index()
     {
-        $brands = Brand::all();
+        $brands = Brand::with(['user', 'employee'])->get();
         return view('brands-list', compact('brands'));
     }
 
@@ -21,7 +21,11 @@ class BrandController extends Controller
             'name.unique' => 'this brand already exist',
         ]);
 
-        Brand::create($validated);
+        Brand::create([
+            'name' => $validated['name'],
+            'user_id' => auth()->check() ? auth()->id() : null,
+            'employee_id' => null, // Set to null as no employee input in form
+        ]);
 
         return redirect()->route('brands.index')->with('success', 'Brand created successfully.');
     }

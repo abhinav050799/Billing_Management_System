@@ -55,6 +55,7 @@
                         </th>
                         <th>Brand</th>
                         <th>Created Date</th>
+                        <th>Created By</th>
                         <th class="no-sort"></th>
                     </tr>
                 </thead>
@@ -69,6 +70,17 @@
                             </td>
                             <td><span class="text-gray-9">{{ $brand->name }}</span></td>
                             <td>{{ \Carbon\Carbon::parse($brand->created_at)->format('d M Y') }}</td>
+                            <td>
+                                <span class="text-gray-9">
+                                    @if ($brand->user_id && $brand->user)
+                                        {{ $brand->user->name }}
+                                    @elseif ($brand->employee_id && $brand->employee)
+                                        {{ $brand->employee->name }}
+                                    @else
+                                        Unknown
+                                    @endif
+                                </span>
+                            </td>
                             <td class="action-table-data">
                                 <div class="edit-delete-action">
                                     <a class="me-2 p-2" href="#" data-bs-toggle="modal" data-bs-target="#edit-brand-{{ $brand->id }}">
@@ -82,7 +94,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="3" class="text-center">No brands found.</td>
+                            <td colspan="5" class="text-center">No brands found.</td>
                         </tr>
                     @endforelse
                 </tbody>
@@ -154,8 +166,6 @@
     </div>
 @endforeach
 
-@include('layouts.footer')
-
 <!-- Delete Brand Modals -->
 @foreach ($brands as $brand)
     <div class="modal fade" id="delete-modal-{{ $brand->id }}">
@@ -181,19 +191,23 @@
     </div>
 @endforeach
 
+@include('layouts.footer')
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
-    // // Initialize DataTable
-    // $('.datatable').DataTable({
-    //     searching: true,
-    //     paging: true,
-    //     ordering: true,
-    //     info: true,
-    //     columnDefs: [
-    //         { orderable: false, targets: ['no-sort'] }
-    //     ]
-    // });
+    // Initialize DataTable
+    $('.datatable').DataTable({
+        searching: true,
+        paging: true,
+        ordering: true,
+        info: true,
+        columnDefs: [
+            { orderable: false, targets: ['no-sort'] }
+        ],
+        language: {
+            emptyTable: "No brands found."
+        }
+    });
 
     // Select All Checkbox
     $('#select-all').on('click', function () {
