@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Brand;
+use App\Models\Employee;
 use Illuminate\Http\Request;
 
 class BrandController extends Controller
@@ -21,11 +22,21 @@ class BrandController extends Controller
             'name.unique' => 'this brand already exist',
         ]);
 
+        $userId = null;
+        $employeeId = null;
+
+        if (auth()->guard('employee')->check()) {
+            $employeeId = auth()->guard('employee')->id();
+            $employee = Employee::find($employeeId);
+            $userId = $employee ? $employee->user_id : null; // Get user_id from employees table
+        } elseif (auth()->check()) {
+            $userId = auth()->id();
+        }
+
         Brand::create([
             'name' => $validated['name'],
-            'user_id' => auth()->check() ? auth()->id() : null,
-            'employee_id' => auth()->guard('employee')->check() ? auth()->guard('employee')->id() : null,
-
+            'user_id' => $userId,
+            'employee_id' => $employeeId,
         ]);
 
         return redirect()->route('brands.index')->with('success', 'Brand created successfully.');

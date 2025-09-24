@@ -1,5 +1,12 @@
 @include('layouts.header')
 
+@if (session('success'))
+    <div class="alert alert-success">{{ session('success') }}</div>
+@endif
+@if (session('error'))
+    <div class="alert alert-danger">{{ session('error') }}</div>
+@endif
+
 <div class="page-header">
     <div class="add-item d-flex">
         <div class="page-title">
@@ -48,6 +55,7 @@
                         </th>
                         <th>Category</th>
                         <th>Created On</th>
+                        <th>Created By</th>
                         <th class="no-sort"></th>
                     </tr>
                 </thead>
@@ -62,6 +70,17 @@
                             </td>
                             <td><span class="text-gray-9">{{ $category->name }}</span></td>
                             <td>{{ \Carbon\Carbon::parse($category->created_at)->format('d M Y') }}</td>
+                            <td>
+                                <span class="text-gray-9">
+                                    @if ($category->employee_id && $category->employee)
+                                        {{ $category->employee->name }}
+                                    @elseif ($category->user_id && $category->user)
+                                        {{ $category->user->name }}
+                                    @else
+                                        Unknown
+                                    @endif
+                                </span>
+                            </td>
                             <td class="action-table-data">
                                 <div class="edit-delete-action">
                                     <a class="me-2 p-2" href="#" data-bs-toggle="modal" data-bs-target="#edit-category-{{ $category->id }}">
@@ -75,7 +94,11 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="4" class="text-center">No categories found.</td>
+                            <td></td>
+                            <td></td>
+                            <td>No categories found.</td>
+                            <td></td>
+                            <td></td>
                         </tr>
                     @endforelse
                 </tbody>
@@ -187,7 +210,15 @@ document.addEventListener('DOMContentLoaded', function () {
     //     info: true,
     //     columnDefs: [
     //         { orderable: false, targets: ['no-sort'] }
-    //     ]
+    //     ],
+    //     language: {
+    //         emptyTable: "No categories found."
+    //     },
+    //     drawCallback: function(settings) {
+    //         if (settings.aoData.length === 0) {
+    //             $(this.api().table().node()).find('tbody').html('<tr><td></td><td></td><td>No categories found.</td><td></td><td></td></tr>');
+    //         }
+    //     }
     // });
 
     // Select All Checkbox

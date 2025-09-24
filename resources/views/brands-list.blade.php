@@ -72,10 +72,10 @@
                             <td>{{ \Carbon\Carbon::parse($brand->created_at)->format('d M Y') }}</td>
                             <td>
                                 <span class="text-gray-9">
-                                    @if ($brand->user_id && $brand->user)
-                                        {{ $brand->user->name }}
-                                    @elseif ($brand->employee_id && $brand->employee)
+                                    @if ($brand->employee_id && $brand->employee)
                                         {{ $brand->employee->name }}
+                                    @elseif ($brand->user_id && $brand->user)
+                                        {{ $brand->user->name }}
                                     @else
                                         Unknown
                                     @endif
@@ -170,6 +170,8 @@
     </div>
 @endforeach
 
+@include('layouts.footer')
+
 <!-- Delete Brand Modals -->
 @foreach ($brands as $brand)
     <div class="modal fade" id="delete-modal-{{ $brand->id }}">
@@ -195,7 +197,6 @@
     </div>
 @endforeach
 
-@include('layouts.footer')
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
