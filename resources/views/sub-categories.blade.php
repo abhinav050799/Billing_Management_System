@@ -41,20 +41,6 @@
                 <span class="btn-searchset"><i class="ti ti-search fs-14 feather-search"></i></span>
             </div>
         </div>
-        <!-- <div class="d-flex table-dropdown my-xl-auto right-content align-items-center flex-wrap row-gap-3">
-            <div class="dropdown me-2">
-                <a href="javascript:void(0);" class="dropdown-toggle btn btn-white btn-md d-inline-flex align-items-center" data-bs-toggle="dropdown">
-                    Category
-                </a>
-                <ul class="dropdown-menu dropdown-menu-end p-3">
-                    @foreach ($categories as $category)
-                        <li>
-                            <a href="javascript:void(0);" class="dropdown-item rounded-1">{{ $category->name }}</a>
-                        </li>
-                    @endforeach
-                </ul>
-            </div>
-        </div> -->
     </div>
     <div class="card-body p-0">
         <div class="table-responsive">
@@ -70,6 +56,7 @@
                         <th>Sub Category</th>
                         <th>Category</th>
                         <th>Created On</th>
+                        <th>Created By</th>
                         <th class="no-sort"></th>
                     </tr>
                 </thead>
@@ -85,6 +72,17 @@
                             <td><span class="text-gray-9">{{ $subcategory->name }}</span></td>
                             <td>{{ $subcategory->category->name ?? 'N/A' }}</td>
                             <td>{{ \Carbon\Carbon::parse($subcategory->created_at)->format('d M Y') }}</td>
+                            <td>
+                                <span class="text-gray-9">
+                                    @if ($subcategory->employee_id && $subcategory->employee)
+                                        {{ $subcategory->employee->name }}
+                                    @elseif ($subcategory->user_id && $subcategory->user)
+                                        {{ $subcategory->user->name }}
+                                    @else
+                                        Unknown
+                                    @endif
+                                </span>
+                            </td>
                             <td class="action-table-data">
                                 <div class="edit-delete-action">
                                     <a class="me-2 p-2" href="#" data-bs-toggle="modal" data-bs-target="#edit-category-{{ $subcategory->id }}">
@@ -98,7 +96,12 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="4" class="text-center">No subcategories found.</td>
+                            <td></td>
+                            <td></td>
+                            <td>No subcategories found.</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                         </tr>
                     @endforelse
                 </tbody>
@@ -222,7 +225,7 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
-    // // Initialize DataTable
+    // Initialize DataTable
     // $('.datatable').DataTable({
     //     searching: true,
     //     paging: true,
@@ -230,7 +233,15 @@ document.addEventListener('DOMContentLoaded', function () {
     //     info: true,
     //     columnDefs: [
     //         { orderable: false, targets: ['no-sort'] }
-    //     ]
+    //     ],
+    //     language: {
+    //         emptyTable: "No subcategories found."
+    //     },
+    //     drawCallback: function(settings) {
+    //         if (settings.aoData.length === 0) {
+    //             $(this.api().table().node()).find('tbody').html('<tr><td></td><td></td><td>No subcategories found.</td><td></td><td></td></tr>');
+    //         }
+    //     }
     // });
 
     // Select All Checkbox
@@ -238,3 +249,4 @@ document.addEventListener('DOMContentLoaded', function () {
         $('input[name="selected_subcategories[]"]').prop('checked', this.checked);
     });
 });
+</script>

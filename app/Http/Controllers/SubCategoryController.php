@@ -10,7 +10,7 @@ class SubCategoryController extends Controller
 {
     public function index()
     {
-        $subcategories = SubCategory::with('category')->get();
+        $subcategories = SubCategory::with(['category', 'user', 'employee'])->get();
         $categories = Category::all();
         return view('sub-categories', compact('subcategories', 'categories'));
     }
@@ -26,7 +26,23 @@ class SubCategoryController extends Controller
             'category_id.exists' => 'Selected category is not valid',
         ]);
 
-        SubCategory::create($validated);
+        $userId = null;
+        $employeeId = null;
+
+        if (auth()->guard('employee')->check()) {
+            $employeeId = auth()->guard('employee')->id();
+            $employee = \App\Models\Employee::find($employeeId);
+            $userId = $employee ? $employee->user_id : null; // Get user_id from employees table
+        } elseif (auth()->check()) {
+            $userId = auth()->id();
+        }
+
+        SubCategory::create([
+            'name' => $validated['name'],
+            'category_id' => $validated['category_id'],
+            'user_id' => $userId,
+            'employee_id' => $employeeId,
+        ]);
 
         return redirect()->route('subcategories.index')->with('success', 'Sub category created successfully.');
     }
