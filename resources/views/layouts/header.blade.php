@@ -707,7 +707,7 @@
                                 <li><a href="account-statement.html"><span>Account Statement</span></a></li>
                             </ul>
                         </li>
-                        <li class="submenu">
+                        <!-- <li class="submenu">
                             <a href="javascript:void(0);"><i class="ti ti-users-group fs-16 me-2"></i><span>UI
                                     Interface</span> <span class="menu-arrow"></span></a>
                             <ul>
@@ -843,8 +843,8 @@
                                     </ul>
                                 </li>
                             </ul>
-                        </li>
-                        <li class="submenu">
+                        </li> -->
+                        <!-- <li class="submenu">
                             <a href="javascript:void(0);"><i class="ti ti-page-break fs-16 me-2"></i><span>Pages</span>
                                 <span class="menu-arrow"></span></a>
                             <ul>
@@ -987,7 +987,7 @@
                                     </ul>
                                 </li>
                             </ul>
-                        </li>
+                        </li> -->
                         <li class="submenu">
                             <a href="javascript:void(0);"><i
                                     class="ti ti-chart-bar fs-16 me-2"></i><span>Reports</span><span
@@ -1044,7 +1044,7 @@
                                 <li><a href="annual-report.html"><span>Annual Report</span></a></li>
                             </ul>
                         </li>
-                        <li class="submenu">
+                        <!-- <li class="submenu">
                             <a href="javascript:void(0);"><i
                                     class="ti ti-settings fs-16 me-2"></i><span>Settings</span><span
                                     class="menu-arrow"></span></a>
@@ -1132,7 +1132,7 @@
                                     <a href="signin.html"><span>Logout</span> </a>
                                 </li>
                             </ul>
-                        </li>
+                        </li> -->
                         <li class="submenu">
                             <a href="javascript:void(0);"><i
                                     class="ti ti-circle-plus fs-16 me-2"></i><span>More</span><span
