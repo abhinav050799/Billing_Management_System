@@ -64,7 +64,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    
+
+    Route::get('/brands-list', [BrandController::class, 'index'])->name('brands.index');
+Route::post('/brands', [BrandController::class, 'store'])->name('brands.store');
+Route::put('/brands/{id}', [BrandController::class, 'update'])->name('brands.update');
+Route::delete('/brands/{id}', [BrandController::class, 'destroy'])->name('brands.destroy');
 });
 
 
@@ -84,6 +88,11 @@ Route::prefix('employee')->group(function () {
 
     // Logout
     Route::post('logout', [EmployeeController::class, 'logout'])->name('employee.logout');
+
+        Route::get('/brands-list', [BrandController::class, 'index'])->name('brands.index');
+Route::post('/brands', [BrandController::class, 'store'])->name('brands.store');
+Route::put('/brands/{id}', [BrandController::class, 'update'])->name('brands.update');
+Route::delete('/brands/{id}', [BrandController::class, 'destroy'])->name('brands.destroy');
 });
 
 require __DIR__.'/auth.php';

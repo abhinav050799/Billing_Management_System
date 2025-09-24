@@ -24,7 +24,8 @@ class BrandController extends Controller
         Brand::create([
             'name' => $validated['name'],
             'user_id' => auth()->check() ? auth()->id() : null,
-            'employee_id' => null, // Set to null as no employee input in form
+            'employee_id' => auth()->guard('employee')->check() ? auth()->guard('employee')->id() : null,
+
         ]);
 
         return redirect()->route('brands.index')->with('success', 'Brand created successfully.');

@@ -94,7 +94,11 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="5" class="text-center">No brands found.</td>
+                            <td></td>
+                            <td></td>
+                            <td>No brands found.</td>
+                            <td></td>
+                            <td></td>
                         </tr>
                     @endforelse
                 </tbody>
@@ -196,18 +200,18 @@
 <script>
 document.addEventListener('DOMContentLoaded', function () {
     // Initialize DataTable
-    $('.datatable').DataTable({
-        searching: true,
-        paging: true,
-        ordering: true,
-        info: true,
-        columnDefs: [
-            { orderable: false, targets: ['no-sort'] }
-        ],
-        language: {
-            emptyTable: "No brands found."
-        }
-    });
+    // $('.datatable').DataTable({
+    //     searching: true,
+    //     paging: true,
+    //     ordering: true,
+    //     info: true,
+    //     columnDefs: [
+    //         { orderable: false, targets: ['no-sort'] }
+    //     ],
+    //     language: {
+    //         emptyTable: "No brands found."
+    //     }
+    // });
 
     // Select All Checkbox
     $('#select-all').on('click', function () {
