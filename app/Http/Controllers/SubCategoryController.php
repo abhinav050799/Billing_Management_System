@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\SubCategory;
+use App\Models\Subcategory;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
-class SubCategoryController extends Controller
+class SubcategoryController extends Controller
 {
     public function index()
     {
-        $subcategories = SubCategory::with(['category', 'user', 'employee'])->get();
+        $subcategories = Subcategory::with(['category', 'user', 'employee'])->get();
         $categories = Category::all();
         return view('sub-categories', compact('subcategories', 'categories'));
     }
@@ -58,7 +58,7 @@ class SubCategoryController extends Controller
             'category_id.exists' => 'Selected category is not valid',
         ]);
 
-        $subcategory = SubCategory::findOrFail($id);
+        $subcategory = Subcategory::findOrFail($id);
         $subcategory->update($validated);
 
         return redirect()->route('subcategories.index')->with('success', 'Sub category updated successfully.');
@@ -66,7 +66,7 @@ class SubCategoryController extends Controller
 
     public function destroy($id)
     {
-        $subcategory = SubCategory::findOrFail($id);
+        $subcategory = Subcategory::findOrFail($id);
         $subcategory->delete();
 
         return redirect()->route('subcategories.index')->with('success', 'Sub category deleted successfully.');
