@@ -13,6 +13,7 @@ class Product extends Model
         'name', 'category_id', 'subcategory_id', 'brand_id', 
         'description', 'hsn_sac_code', 'unit_of_measure', 'unit_price', 'tax_type', 'tax_category', 
         'tax_percentage', 'quantity', 'quantity_alert', 'barcode', 'manufactured_date', 'expiry_date',
+        'user_id', 'employee_id'
     ];
 
     // public function vendor()

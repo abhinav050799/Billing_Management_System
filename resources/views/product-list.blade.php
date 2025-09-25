@@ -103,7 +103,7 @@
                         <!-- <th>Quantity Alert</th> -->
                         <th>Manufactured Date</th>
                         <th>Expiry Date</th>
-                        <!-- <th>Created At</th> -->
+                        <th>Created By</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -132,7 +132,17 @@
                             <!-- <td>{{ $product->quantity_alert ? number_format($product->quantity_alert, 2) : 'N/A' }}</td> -->
                             <td>{{ $product->manufactured_date ?? 'N/A' }}</td>
                             <td>{{ $product->expiry_date ?? 'N/A' }}</td>
-                            <!-- <td>{{ $product->created_at->format('Y-m-d H:i:s') }}</td> -->
+                            <td>
+                                <span class="text-gray-9">
+                                    @if ($product->employee_id && $product->employee)
+                                        {{ $product->employee->name }}
+                                    @elseif ($product->user_id && $product->user)
+                                        {{ $product->user->name }}
+                                    @else
+                                        Unknown
+                                    @endif
+                                </span>
+                            </td>
                             <td class="action-table-data">
                                 <div class="edit-delete-action">
                                     <!-- <a class="me-2 edit-icon p-2" href="product-details"> -->
@@ -150,7 +160,21 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="17" class="text-center">No products found.</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>No products found.</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                         </tr>
                     @endforelse
                 </tbody>
@@ -197,7 +221,15 @@ document.addEventListener('DOMContentLoaded', function () {
     //     info: true,
     //     columnDefs: [
     //         { orderable: false, targets: ['no-sort'] }
-    //     ]
+    //     ],
+    //     language: {
+    //         emptyTable: "No products found."
+    //     },
+    //     drawCallback: function(settings) {
+    //         if (settings.aoData.length === 0) {
+    //             $(this.api().table().node()).find('tbody').html('<tr><td></td><td>No products found.</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>');
+    //         }
+    //     }
     // });
 
     // Select All Checkbox

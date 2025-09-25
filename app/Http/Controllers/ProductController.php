@@ -13,7 +13,7 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::with(['category', 'subcategory', 'brand'])->get();
+        $products = Product::with(['category', 'subcategory', 'brand', 'user', 'employee'])->get();
         $categories = Category::all();
         $brands = Brand::all();
         return view('product-list', compact('products', 'categories', 'brands'));
@@ -65,16 +65,28 @@ class ProductController extends Controller
             }
         }
 
+        $userId = null;
+        $employeeId = null;
+
+        if (auth()->guard('employee')->check()) {
+            $employeeId = auth()->guard('employee')->id();
+            $employee = \App\Models\Employee::find($employeeId);
+            $userId = $employee ? $employee->user_id : null; // Get user_id from employees table
+        } elseif (auth()->check()) {
+            $userId = auth()->id();
+        }
+
+        $validated['user_id'] = $userId;
+        $validated['employee_id'] = $employeeId;
+
         Product::create($validated);
 
-        // return redirect()->route('home')->with('success', 'Product created successfully.');
-        return redirect("/")->with('success', 'Product created successfully.');
-        
+        return redirect()->route('products.index')->with('success', 'Product created successfully.');
     }
 
     public function show($id)
     {
-        $product = Product::with(['category', 'subcategory', 'brand'])->findOrFail($id);
+        $product = Product::with(['category', 'subcategory', 'brand', 'user', 'employee'])->findOrFail($id);
         return view('product-details', compact('product'));
     }
 
@@ -124,8 +136,23 @@ class ProductController extends Controller
             }
         }
 
+        $userId = null;
+        $employeeId = null;
+
+        if (auth()->guard('employee')->check()) {
+            $employeeId = auth()->guard('employee')->id();
+            $employee = \App\Models\Employee::find($employeeId);
+            $userId = $employee ? $employee->user_id : null; // Get user_id from employees table
+        } elseif (auth()->check()) {
+            $userId = auth()->id();
+        }
+
+        $validated['user_id'] = $userId;
+        $validated['employee_id'] = $employeeId;
+
         $product = Product::findOrFail($id);
         $product->update($validated);
+
         return redirect()->route('products.index')->with('success', 'Product updated successfully.');
     }
 
