@@ -79,6 +79,8 @@ class ProductController extends Controller
         $validated['user_id'] = $userId;
         $validated['employee_id'] = $employeeId;
 
+        //  dd(auth()->user(), auth()->guard('employee')->user());
+
         Product::create($validated);
 
         return redirect()->route('products.index')->with('success', 'Product created successfully.');
@@ -160,6 +162,6 @@ class ProductController extends Controller
     {
         $product = Product::findOrFail($id);
         $product->delete();
-        return redirect()->route('products.index')->with('success', 'Product deleted successfully.');
+        return redirect()->route('products.index')->with('danger', 'Product deleted successfully.');
     }
 }
